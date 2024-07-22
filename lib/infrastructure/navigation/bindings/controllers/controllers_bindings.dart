@@ -1,0 +1,1 @@
+export 'package:quiz_clean_archi/infrastructure/navigation/bindings/controllers/home.controller.binding.dart'; 
