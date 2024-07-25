@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:15834419185:android:a0ffb36ad6f726bbe13e50",
+        "mobilesdk_app_id": "1:15834419185:android:03defab77da60850e13e50",
         "android_client_info": {
-          "package_name": "com.devnex"
+          "package_name": "com.devnex.brainbolt"
         }
       },
       "oauth_client": [],
@@ -26,9 +26,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:15834419185:android:03defab77da60850e13e50",
+        "mobilesdk_app_id": "1:15834419185:android:294f14dfe0ffe5b7e13e50",
         "android_client_info": {
-          "package_name": "com.devnex.brainbolt"
+          "package_name": "com.devnex.quiz_clean_archi"
         }
       },
       "oauth_client": [],

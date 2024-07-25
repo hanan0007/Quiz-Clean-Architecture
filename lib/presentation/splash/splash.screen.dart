@@ -10,9 +10,9 @@ class SplashScreen extends GetView<SplashController> {
   const SplashScreen({super.key});
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
+    final height = controller.getHeight(context);
     final widht = MediaQuery.sizeOf(context).width;
-    controller.onInit();
+    // controller.onInit();
     return Scaffold(
       body: SizedBox(
         height: height,

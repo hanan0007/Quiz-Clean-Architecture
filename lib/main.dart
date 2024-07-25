@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/firebase_options.dart';
+
 import 'package:quiz_clean_archi/infrastructure/theme/theme.dart';
 
 import 'infrastructure/navigation/navigation.dart';

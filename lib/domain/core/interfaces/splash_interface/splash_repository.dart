@@ -1,3 +1,4 @@
 abstract class SplashRepository {
-  void initilizefirebasemessage();
+  Future<void> initilizefirebasemessage();
+  Future<void> gettoken();
 }

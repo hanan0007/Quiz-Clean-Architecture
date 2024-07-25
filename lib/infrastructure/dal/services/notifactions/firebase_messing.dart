@@ -2,11 +2,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class FirebaseMessing {
-  initilizefirebasemessage() {
-    FirebaseMessaging.instance.requestPermission();
-    FirebaseMessaging.instance.getToken().then((token) {
-      debugPrint("FCM Token: $token");
-    });
+  initilizefirebasemessage() async {
+    print('funtion started');
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       debugPrint('Received a message in the foreground!');
       if (message.notification != null) {
@@ -21,5 +19,12 @@ class FirebaseMessing {
     });
     // Subscribe to topic
     FirebaseMessaging.instance.subscribeToTopic('allUsers');
+  }
+
+  gettoken() async {
+    await FirebaseMessaging.instance.requestPermission();
+    FirebaseMessaging.instance.getToken().then((token) {
+      debugPrint("FCM Token: $token");
+    });
   }
 }
