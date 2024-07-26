@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/firebase_options.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/connectivity/internet_connectivity.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/sound/global_music.dart';
 
 import 'package:quiz_clean_archi/infrastructure/theme/theme.dart';
 
@@ -26,7 +27,7 @@ void main() async {
   );
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   var initialRoute = await Routes.initialRoute;
-
+  Get.put(AudioController());
   runApp(Main(initialRoute));
 }
 

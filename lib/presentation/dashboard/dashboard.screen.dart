@@ -4,11 +4,13 @@ import 'package:get/get.dart';
 import 'package:pushable_button/pushable_button.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/app_exit/appexit_confermation.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/sound/global_music.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/circle_score.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/empty_circle.dart';
 import 'package:quiz_clean_archi/presentation/home/home.screen.dart';
 
 import 'controllers/dashboard.controller.dart';
+import 'user_profile_dialogue.dart';
 
 class DashboardScreen extends GetView<DashboardController> {
   DashboardScreen({super.key});
@@ -16,6 +18,7 @@ class DashboardScreen extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
+    final AudioController audioController = Get.find();
     return Scaffold(
       // bottomNavigationBar: controller.isBottomBannerAdLoaded
       //     ? SizedBox(
@@ -166,11 +169,11 @@ class DashboardScreen extends GetView<DashboardController> {
                                 //     .fetchVersionFromFirestore(context);
                                 // FirebaseService.fetchVersionFromFirestore();
                                 //===========
-                                // ProfileDialog.showProfileDialog(
-                                //     context,
-                                //     controller.name,
-                                //     controller.age,
-                                //     controller.gender);
+                                ProfileDialog.showProfileDialog(
+                                    context,
+                                    controller.name,
+                                    controller.age,
+                                    controller.gender);
                               },
                             ),
                           ),
@@ -191,26 +194,22 @@ class DashboardScreen extends GetView<DashboardController> {
                           const Text('Leaderboard')
                         ],
                       ),
-                      // Obx(() =>
-                      Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 25,
-                            child: IconButton(
-                              icon: Icon(
-                                  // audioController.isPlaying
-                                  //   ? Icons.volume_up
-                                  // :
-                                  Icons.volume_off),
-                              onPressed: () {
-                                // audioController.toggleMusic();
-                              },
-                            ),
-                          ),
-                          const Text('Sound')
-                        ],
-                      )
-                      // ),
+                      Obx(() => Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 25,
+                                child: IconButton(
+                                  icon: Icon(audioController.isPlaying
+                                      ? Icons.volume_up
+                                      : Icons.volume_off),
+                                  onPressed: () {
+                                    audioController.toggleMusic();
+                                  },
+                                ),
+                              ),
+                              const Text('Sound')
+                            ],
+                          )),
                     ],
                   ),
                 ),
@@ -229,7 +228,7 @@ class DashboardScreen extends GetView<DashboardController> {
                             child: IconButton(
                               icon: const Icon(Icons.reviews),
                               onPressed: () {
-                                // controller.launchEmail();
+                                controller.emaillaunch();
                               },
                             ),
                           ),

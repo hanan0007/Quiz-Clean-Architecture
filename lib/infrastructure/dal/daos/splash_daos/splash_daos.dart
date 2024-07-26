@@ -12,7 +12,7 @@ class SplashDao implements SplashRepository {
 
   @override
   Future<void> gettoken() async {
-    // TODO: implement gettoken
+   
     await firebaseMessaging.gettoken();
   }
 }
