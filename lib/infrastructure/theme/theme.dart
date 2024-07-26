@@ -112,7 +112,7 @@ class AppTheme {
         fontFamily: appFontFamily,
         appBarTheme: appbarthemedark,
         iconTheme: darkIconThemeData,
-        textTheme: darkTxtTheme,
+        // textTheme: darkTxtTheme,
         primaryTextTheme: darkTxtTheme,
         // bottomNavigationBarTheme: darkBottomNavigationBarTheme,
         // bannerTheme: darkBannerTheme,

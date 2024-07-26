@@ -3,11 +3,10 @@ import 'package:quiz_clean_archi/infrastructure/theme/color_scheme.dart';
 
 IconButtonThemeData get iconButtonTheme => IconButtonThemeData(
       style: ButtonStyle(
+        backgroundColor:
+            WidgetStateProperty.all(colorSchemelight.secondaryContainer),
         splashFactory: InkRipple.splashFactory,
-        // backgroundColor:
-        //     WidgetStateProperty.all(colorSchemeLight.secondaryContainer),
-        foregroundColor:
-            WidgetStateProperty.all(colorSchemelight.onSecondaryContainer),
+        foregroundColor: WidgetStateProperty.all(Colors.white),
         overlayColor: WidgetStateProperty.resolveWith<Color?>(
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
@@ -20,24 +19,22 @@ IconButtonThemeData get iconButtonTheme => IconButtonThemeData(
           },
         ),
         shadowColor: WidgetStateProperty.all(colorSchemelight.shadow),
-        // elevation: WidgetStateProperty.all(2),
-        padding: WidgetStateProperty.all(const EdgeInsets.all(8)),
+        padding:
+            WidgetStateProperty.all(const EdgeInsets.all(8)), // Adjust padding
+        minimumSize:
+            WidgetStateProperty.all(const Size(48, 48)), // Ensure minimum size
         shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4.0),
-          ),
-        ),
-// Define other properties if needed
+            const CircleBorder()), // Use CircleBorder for round shape
+        alignment: Alignment.center, // Center the icon
       ),
     );
 
 IconButtonThemeData get darkIconButtonTheme => IconButtonThemeData(
       style: ButtonStyle(
+        backgroundColor:
+            WidgetStateProperty.all(colorSchemelDark.secondaryContainer),
         splashFactory: InkRipple.splashFactory,
-        // backgroundColor:
-        //     WidgetStateProperty.all(colorSchemeDark.secondaryContainer),
-        foregroundColor:
-            WidgetStateProperty.all(colorSchemelDark.onSecondaryContainer),
+        foregroundColor: WidgetStateProperty.all(Colors.black),
         overlayColor: WidgetStateProperty.resolveWith<Color?>(
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
@@ -50,13 +47,12 @@ IconButtonThemeData get darkIconButtonTheme => IconButtonThemeData(
           },
         ),
         shadowColor: WidgetStateProperty.all(colorSchemelDark.shadow),
-        // elevation: WidgetStateProperty.all(2),
-        padding: WidgetStateProperty.all(const EdgeInsets.all(8)),
+        padding:
+            WidgetStateProperty.all(const EdgeInsets.all(8)), // Adjust padding
+        minimumSize:
+            WidgetStateProperty.all(Size(48, 48)), // Ensure minimum size
         shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4.0),
-          ),
-        ),
-// Define other properties if needed
+            const CircleBorder()), // Use CircleBorder for round shape
+        alignment: Alignment.center, // Center the icon
       ),
     );

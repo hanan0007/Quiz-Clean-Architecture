@@ -36,5 +36,15 @@ class Nav {
       page: () => const SplashScreen(),
       binding: SplashControllerBinding(),
     ),
+    GetPage(
+      name: Routes.DASHBOARD,
+      page: () => DashboardScreen(),
+      binding: DashboardControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.LOGIN,
+      page: () => const LoginScreen(),
+      binding: LoginControllerBinding(),
+    ),
   ];
 }

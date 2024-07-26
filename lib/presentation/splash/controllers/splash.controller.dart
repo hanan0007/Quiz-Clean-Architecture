@@ -10,7 +10,6 @@ class SplashController extends GetxController {
   SplashController(this.firebasemsgUsecase, this.gettokenUsecase);
   @override
   onInit() async {
-    // TODO: implement onInit
     super.onInit();
     started();
   }
@@ -19,8 +18,8 @@ class SplashController extends GetxController {
     try {
       await firebasemsgUsecase.execute();
       gettokenUsecase.execute();
-      Future.delayed(Duration(seconds: 2), () {
-        Get.toNamed(Routes.HOME);
+      Future.delayed(const Duration(seconds: 2), () {
+        Get.toNamed(Routes.DASHBOARD);
       });
     } catch (e) {
       print(e);

@@ -3,7 +3,9 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/firebase_options.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/connectivity/internet_connectivity.dart';
 
 import 'package:quiz_clean_archi/infrastructure/theme/theme.dart';
 
@@ -17,6 +19,8 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await _checkinterjnet();
+  await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -40,4 +44,8 @@ class Main extends StatelessWidget {
       getPages: Nav.routes,
     );
   }
+}
+
+Future<void> _checkinterjnet() async {
+  await ConnectivityService.checkConnectivity();
 }
