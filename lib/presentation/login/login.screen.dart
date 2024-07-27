@@ -121,7 +121,7 @@ class LoginScreen extends GetView<LoginController> {
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text(
-                                    controller.selectedGende,
+                                    controller.selectedGende.value,
                                     style: const TextStyle(
                                         fontWeight: FontWeight.w700,
                                         fontSize: AppTextSizes.titleSmallFont),

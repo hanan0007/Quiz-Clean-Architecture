@@ -1,9 +1,12 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/domain/core/interfaces/dashbard_interface/dashboard_repository.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/db/database_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:share_plus/share_plus.dart';
 
 class DashboardDaos implements DashboardRepository {
+  final FirebaseService firebaseService;
+  DashboardDaos(this.firebaseService);
   @override
   // ==== Launch Email
   launchEmail() async {
@@ -37,5 +40,10 @@ class DashboardDaos implements DashboardRepository {
       'age': age,
       'gender': gender,
     };
+  }
+
+  @override
+  Future<String?> checkVersion() async {
+    return await firebaseService.fetchVersionFromFirestore();
   }
 }
