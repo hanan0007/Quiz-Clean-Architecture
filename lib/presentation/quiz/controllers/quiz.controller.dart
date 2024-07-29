@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/domain/core/usecase/quiz_usecase/load_question_usecase.dart';
+import 'package:quiz_clean_archi/domain/core/usecase/quiz_usecase/updateuser_stats_usecase.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/models/question_model/question_model.dart';
 import 'package:html/parser.dart';
+import 'package:quiz_clean_archi/infrastructure/navigation/routes.dart';
 
 class QuizController extends GetxController {
   final LoadQuestionUsecase loadQuestionUsecase;
-  QuizController(this.loadQuestionUsecase);
+  final UpdateuserStatsUsecase updateuserStatsUsecase;
+  QuizController(this.loadQuestionUsecase, this.updateuserStatsUsecase);
 
   String cat = Get.arguments['cat'];
   String name = Get.arguments['name'];
@@ -31,7 +33,7 @@ class QuizController extends GetxController {
   loadquestion() async {
     questionsFuture =
         loadQuestionUsecase.execute(totalQuestions, cat, 'medium');
-    print("object${questionsFuture}");
+
     _loadQuestions();
   }
 
@@ -61,14 +63,20 @@ class QuizController extends GetxController {
       shuffleAnswers(questions[currentQuestionIndex]);
       update();
     } else {
-      print('total right answer is ${correctAnswersCount}');
       // Handle quiz completion
-      // _updateUserStatsInFirebase();
-
+      _updateUserStatsInFirebase();
+      Get.offNamed(Routes.QUIZCOMPLETION,
+          arguments: {"correct": correctAnswersCount});
       // Get.offAll(() => QuizcompleteView(
       //       number: correctAnswersCount,
       //     ));
     }
+  }
+
+  Future<void> _updateUserStatsInFirebase() async {
+    GetStorage storage = GetStorage();
+    String userId = storage.read('id');
+    updateuserStatsUsecase.execute(userId, correctAnswersCount, totalQuestions);
   }
 
   void checkAnswer(String answer, String correctAnswer) {
@@ -82,7 +90,6 @@ class QuizController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     loadquestion();
   }

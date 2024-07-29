@@ -56,5 +56,10 @@ class Nav {
       page: () => const QuizScreen(),
       binding: QuizControllerBinding(),
     ),
+    GetPage(
+      name: Routes.QUIZCOMPLETION,
+      page: () => const QuizcompletionScreen(),
+      binding: QuizcompletionControllerBinding(),
+    ),
   ];
 }

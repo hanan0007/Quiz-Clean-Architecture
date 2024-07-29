@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/infrastructure/theme/color_scheme.dart';
 import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/app_bar_theme.dart';
-import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/card_theme.dart';
 import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/drawer_theme.dart';
 import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/icon_button_theme.dart';
 import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/icon_theme.dart';

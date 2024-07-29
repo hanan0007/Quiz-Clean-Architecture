@@ -3,9 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
-import 'package:quiz_clean_archi/infrastructure/navigation/routes.dart';
-import 'package:quiz_clean_archi/presentation/leaderboard/marquee_text.dart';
-// import 'package:marquee/marquee.dart';
 
 import 'controllers/leaderboard.controller.dart';
 

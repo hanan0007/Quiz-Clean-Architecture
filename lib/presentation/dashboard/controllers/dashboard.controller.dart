@@ -68,8 +68,9 @@ class DashboardController extends GetxController {
 // Calculate score in points
   RxString calculatescore = '0'.obs;
   int calculateScore() {
-    int score = user.value.correct * 10 - user.value.wrong * 5;
+    int score = (user.value.correct * 10) - (user.value.wrong * 5);
     calculatescore.value = score.toString();
+    print('score is the ${calculatescore.value.toString()}');
     return score;
   }
 

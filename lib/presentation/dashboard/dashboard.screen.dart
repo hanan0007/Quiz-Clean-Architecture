@@ -8,13 +8,11 @@ import 'package:quiz_clean_archi/infrastructure/dal/services/sound/global_music.
 import 'package:quiz_clean_archi/infrastructure/navigation/routes.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/circle_score.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/empty_circle.dart';
-import 'package:quiz_clean_archi/presentation/home/home.screen.dart';
-
 import 'controllers/dashboard.controller.dart';
 import 'user_profile_dialogue.dart';
 
 class DashboardScreen extends GetView<DashboardController> {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;

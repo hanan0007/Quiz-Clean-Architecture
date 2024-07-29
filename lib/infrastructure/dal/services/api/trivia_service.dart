@@ -9,7 +9,6 @@ import 'package:http/http.dart' as http;
 class TriviaService {
   Future<List<QuestionModel>?> fetchQuestions(
       int amount, String category, String difficulty) async {
-    print("hellllllllllllllllllllllll");
     try {
       final response = await http
           .get(Uri.parse(

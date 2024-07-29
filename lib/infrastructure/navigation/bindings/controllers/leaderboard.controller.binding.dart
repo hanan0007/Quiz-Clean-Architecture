@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/core/interfaces/leaderboard_interface/leaderboard_repository.dart';
 import 'package:quiz_clean_archi/domain/core/usecase/leaderboard_usecase/topuser_usecase.dart';

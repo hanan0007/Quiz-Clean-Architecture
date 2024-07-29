@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 class FirebaseMessing {
   initilizefirebasemessage() async {
-    print('funtion started');
-
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       debugPrint('Received a message in the foreground!');
       if (message.notification != null) {

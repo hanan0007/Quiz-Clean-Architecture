@@ -1,6 +1,3 @@
-import 'dart:convert';
-
-import 'package:flutter/foundation.dart';
 import 'package:quiz_clean_archi/domain/core/entities/question_entitis.dart';
 
 class QuestionModel extends QuestionEntitis {

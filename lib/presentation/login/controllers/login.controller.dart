@@ -1,8 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/domain/core/usecase/login_usecase/store_user_firebase.dart';
 import 'package:quiz_clean_archi/domain/core/usecase/login_usecase/write_usercredentioal_usecase.dart';
@@ -67,7 +64,7 @@ class LoginController extends GetxController {
   void _checkFields() {
     if (nameController.text.isNotEmpty &&
         ageController.text.isNotEmpty &&
-        selectedGende != 'Select Gender') {
+        selectedGende.value != 'Select Gender') {
       isButtonEnabled.value = true;
     } else {
       isButtonEnabled.value = false;
@@ -76,7 +73,6 @@ class LoginController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     nameController.addListener(_checkFields);
     ageController.addListener(_checkFields);

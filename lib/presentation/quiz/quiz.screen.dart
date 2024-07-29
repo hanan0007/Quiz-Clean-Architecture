@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
 import 'package:pushable_button/pushable_button.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
-import 'package:quiz_clean_archi/domain/const/text_const.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/models/question_model/question_model.dart';
 
 import 'controllers/quiz.controller.dart';
@@ -28,10 +27,6 @@ class QuizScreen extends GetView<QuizController> {
       appBar: AppBar(
         title: Text(
           controller.name,
-          style: TextStyle(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black
-                  : Colors.white),
         ),
         centerTitle: true,
         backgroundColor: colorScheme(context).secondary,
@@ -42,9 +37,6 @@ class QuizScreen extends GetView<QuizController> {
           icon: const Icon(
             Icons.arrow_back_ios_new,
           ),
-          color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.black
-              : Colors.white,
         ),
       ),
       body: Stack(
@@ -233,7 +225,10 @@ class QuizScreen extends GetView<QuizController> {
                                                 child: Text(
                                                   controller.isAnswerCorrect!
                                                       ? 'Correct!'
-                                                      : 'Incorrect! The correct answer is ${question.correctAnswer}',
+                                                      : 'Incorrect! The correct answer is ${controller.parseHtmlString(
+                                                          question
+                                                              .correctAnswer,
+                                                        )}',
                                                   style: TextStyle(
                                                       color: controller
                                                               .isAnswerCorrect!
@@ -262,14 +257,10 @@ class QuizScreen extends GetView<QuizController> {
                                                   blurRadius: 7,
                                                   offset: const Offset(0, 2),
                                                 ),
-                                                child: Text('Next Question',
+                                                child: const Text(
+                                                    'Next Question',
                                                     style: TextStyle(
                                                         fontSize: 18,
-                                                        color: Theme.of(context)
-                                                                    .brightness ==
-                                                                Brightness.light
-                                                            ? Colors.white
-                                                            : Colors.black,
                                                         fontWeight:
                                                             FontWeight.bold)),
                                                 onPressed: () {

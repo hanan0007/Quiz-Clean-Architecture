@@ -13,7 +13,6 @@ class FirebaseService {
   Future<void> addUser(UserModel user) async {
     try {
       await _firestore.collection('users').doc(user.id).set(user.toMap());
-      print('user hasben added');
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -26,7 +25,7 @@ class FirebaseService {
           .collection('version')
           .doc('32MfXVaTJU6LVKp80kmG')
           .get()
-          .timeout(const Duration(seconds: 5));
+          .timeout(const Duration(seconds: 10));
       if (documentSnapshot.exists) {
         debugPrint("The version is ${documentSnapshot.get('version')}");
         return documentSnapshot.get('version');
