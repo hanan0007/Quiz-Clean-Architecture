@@ -5,15 +5,14 @@ import 'package:pushable_button/pushable_button.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/app_exit/appexit_confermation.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/sound/global_music.dart';
+import 'package:quiz_clean_archi/infrastructure/navigation/routes.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/circle_score.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/empty_circle.dart';
-import 'package:quiz_clean_archi/presentation/home/home.screen.dart';
-
 import 'controllers/dashboard.controller.dart';
 import 'user_profile_dialogue.dart';
 
 class DashboardScreen extends GetView<DashboardController> {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.sizeOf(context).height;
@@ -43,81 +42,75 @@ class DashboardScreen extends GetView<DashboardController> {
                           bottomRight: Radius.circular(30))),
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 30),
-                    child:
-                        //  Obx(
-                        //   () =>
-                        Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        // controller.isLoading.value
-                        // ? SizedBox(
-                        //     height: 180, // Adjusted height
-                        //     width: 180, // Adjusted width
-                        //     child: CustomPaint(
-                        //       painter: MyPainterEmptyCircle(),
-                        //     ),
-                        //   )
-                        // :
-                        CircleView(
-                            righquestion: 12,
-                            // controller.user.value.correct,
-                            totalquestion: 13,
-                            // controller.user.value.totalquestion,
-                            controller: controller,
-                            wrongquestion:
-                                // controller.user.value.wrong
-                                35),
-                        CircleAvatar(
-                          backgroundColor:
-                              Theme.of(context).brightness == Brightness.dark
-                                  ? const Color.fromARGB(255, 31, 31, 31)
-                                  : Colors.white,
-                          radius: 65,
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  'Your Score',
-                                  style: TextStyle(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Colors.white
-                                          : Colors.black,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                // Obx(
-                                //   () =>
-                                Text(
-                                  "12",
-                                  // "controller.calculatescore.value",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: colorScheme(context).secondary,
-                                      fontSize: 30),
-                                ),
-                                // ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      'pt',
-                                      style: TextStyle(
-                                          color: Theme.of(context).brightness ==
-                                                  Brightness.dark
-                                              ? Colors.white
-                                              : Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
+                    child: Obx(
+                      () => Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          controller.isLoading.value
+                              ? SizedBox(
+                                  height: 180, // Adjusted height
+                                  width: 180, // Adjusted width
+                                  child: CustomPaint(
+                                    painter: MyPainterEmptyCircle(),
+                                  ),
                                 )
-                              ],
+                              : CircleView(
+                                  righquestion: controller.user.value.correct,
+                                  totalquestion:
+                                      controller.user.value.totalquestion,
+                                  controller: controller,
+                                  wrongquestion: controller.user.value.wrong),
+                          CircleAvatar(
+                            backgroundColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? const Color.fromARGB(255, 31, 31, 31)
+                                    : Colors.white,
+                            radius: 65,
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Your Score',
+                                    style: TextStyle(
+                                        color: Theme.of(context).brightness ==
+                                                Brightness.dark
+                                            ? Colors.white
+                                            : Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Obx(
+                                    () => Text(
+                                      // "12",
+                                      controller.calculatescore.value,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: colorScheme(context).secondary,
+                                          fontSize: 30),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'pt',
+                                        style: TextStyle(
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.dark
+                                                    ? Colors.white
+                                                    : Colors.black,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     ),
-                    // ),
                   ),
                 ),
                 const SizedBox(
@@ -146,7 +139,7 @@ class DashboardScreen extends GetView<DashboardController> {
                             fontWeight: FontWeight.bold)),
 
                     onPressed: () {
-                      Get.offAll(() => const HomeScreen());
+                      Get.offNamed(Routes.HOME);
                     },
                   ),
                 ),
@@ -187,7 +180,7 @@ class DashboardScreen extends GetView<DashboardController> {
                             child: IconButton(
                               icon: const Icon(Icons.leaderboard_outlined),
                               onPressed: () {
-                                // Get.to(() => const LeaderboardView());
+                                Get.toNamed(Routes.LEADERBOARD);
                               },
                             ),
                           ),
@@ -242,7 +235,7 @@ class DashboardScreen extends GetView<DashboardController> {
                             child: IconButton(
                               icon: const Icon(Icons.share),
                               onPressed: () {
-                                // controller.shareText();
+                                controller.shareApp();
                               },
                             ),
                           ),
@@ -288,68 +281,75 @@ class DashboardScreen extends GetView<DashboardController> {
                     borderRadius: BorderRadius.circular(21),
                   ),
                   child: Center(
-                      child:
-                          //  Obx(
-                          //   () {
-                          // if (controller.isLoading.value) {
-                          //   return const CircularProgressIndicator();
-                          // }
-                          // else
-                          //  {
+                    child: Obx(
+                      () {
+                        if (controller.isLoading.value) {
+                          return const CircularProgressIndicator();
+                        } else {
+                          List data = [
+                            'Completion',
+                            'Total Questions',
+                            'Correct',
+                            'Wrong',
+                          ];
+                          List dataint = [
+                            controller.calculatecompletion.value,
+                            '${controller.user.value.totalquestion}',
+                            '${controller.user.value.correct}',
+                            '${controller.user.value.wrong}',
+                          ];
 
-                          // return
-                          GridView.builder(
-                    itemCount: data.length,
-                    physics: const NeverScrollableScrollPhysics(),
-                    // scrollDirection: ,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisExtent: 85,
-                            crossAxisSpacing: 20),
-                    itemBuilder: (context, index) {
-                      Color color = index == 2
-                          ? Colors.green
-                          : index == 3
-                              ? Colors.red
-                              : colorScheme(context).secondary;
-                      return Column(
-                        children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.circle,
-                                size: width * 0.05,
-                                color: color,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                dataint[index],
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: color,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              const SizedBox(width: 20),
-                              Text(
-                                data[index],
-                                style: const TextStyle(fontSize: 15),
-                              ),
-                            ],
-                          )
-                        ],
-                      );
-                    },
-                  )
-                      // }
-                      //   },
-                      // ),
-                      ),
+                          return GridView.builder(
+                            itemCount: data.length,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisExtent: 85,
+                                    crossAxisSpacing: 20),
+                            itemBuilder: (context, index) {
+                              Color color = index == 2
+                                  ? Colors.green
+                                  : index == 3
+                                      ? Colors.red
+                                      : colorScheme(context).secondary;
+                              return Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.circle,
+                                        size: width * 0.05,
+                                        color: color,
+                                      ),
+                                      const SizedBox(width: 4),
+                                      Text(
+                                        dataint[index],
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w600,
+                                          color: color,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const SizedBox(width: 20),
+                                      Text(
+                                        data[index],
+                                        style: const TextStyle(fontSize: 15),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              );
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ),
                 ),
               ),
             )
@@ -358,21 +358,4 @@ class DashboardScreen extends GetView<DashboardController> {
       ),
     );
   }
-
-  List data = [
-    'Completion',
-    'Total Questions',
-    'Correct',
-    'Wrong',
-  ];
-  List dataint = [
-    "12",
-    "14",
-    "35",
-    "56",
-    // "controller.calculatecompletion.value",
-    // '{controller.user.value.totalquestion}',
-    // '{controller.user.value.correct}',
-    // '{controller.user.value.wrong}',
-  ];
 }

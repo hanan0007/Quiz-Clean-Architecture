@@ -46,5 +46,20 @@ class Nav {
       page: () => const LoginScreen(),
       binding: LoginControllerBinding(),
     ),
+    GetPage(
+      name: Routes.LEADERBOARD,
+      page: () => const LeaderboardScreen(),
+      binding: LeaderboardControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.QUIZ,
+      page: () => const QuizScreen(),
+      binding: QuizControllerBinding(),
+    ),
+    GetPage(
+      name: Routes.QUIZCOMPLETION,
+      page: () => const QuizcompletionScreen(),
+      binding: QuizcompletionControllerBinding(),
+    ),
   ];
 }
