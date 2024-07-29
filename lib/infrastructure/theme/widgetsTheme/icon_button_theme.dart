@@ -10,10 +10,10 @@ IconButtonThemeData get iconButtonTheme => IconButtonThemeData(
         overlayColor: WidgetStateProperty.resolveWith<Color?>(
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
-              return colorSchemelight.secondary.withOpacity(0.3);
+              return Colors.grey.withOpacity(0.3);
             }
             if (states.contains(WidgetState.hovered)) {
-              return colorSchemelight.secondary.withOpacity(0.08);
+              return Colors.grey.withOpacity(0.08);
             }
             return null; // Defer to the widget's default.
           },
@@ -38,10 +38,10 @@ IconButtonThemeData get darkIconButtonTheme => IconButtonThemeData(
         overlayColor: WidgetStateProperty.resolveWith<Color?>(
           (Set<WidgetState> states) {
             if (states.contains(WidgetState.pressed)) {
-              return colorSchemelDark.secondary.withOpacity(0.3);
+              return Colors.grey.withOpacity(0.3);
             }
             if (states.contains(WidgetState.hovered)) {
-              return colorSchemelDark.secondary.withOpacity(0.08);
+              return Colors.grey.withOpacity(0.08);
             }
             return null; // Defer to the widget's default.
           },
@@ -50,7 +50,7 @@ IconButtonThemeData get darkIconButtonTheme => IconButtonThemeData(
         padding:
             WidgetStateProperty.all(const EdgeInsets.all(8)), // Adjust padding
         minimumSize:
-            WidgetStateProperty.all(Size(48, 48)), // Ensure minimum size
+            WidgetStateProperty.all(const Size(48, 48)), // Ensure minimum size
         shape: WidgetStateProperty.all(
             const CircleBorder()), // Use CircleBorder for round shape
         alignment: Alignment.center, // Center the icon

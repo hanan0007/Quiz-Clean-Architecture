@@ -6,6 +6,8 @@ class Routes {
 
   static const DASHBOARD = '/dashboard';
   static const HOME = '/home';
-  static const SPLASH = '/splash';
+  static const LEADERBOARD = '/leaderboard';
   static const LOGIN = '/login';
+  static const SPLASH = '/splash';
+  static const QUIZ = '/quiz';
 }

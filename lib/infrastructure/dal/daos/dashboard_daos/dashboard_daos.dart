@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/domain/core/interfaces/dashbard_interface/dashboard_repository.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/db/database_service.dart';
@@ -42,8 +43,15 @@ class DashboardDaos implements DashboardRepository {
     };
   }
 
+// check app version
   @override
   Future<String?> checkVersion() async {
     return await firebaseService.fetchVersionFromFirestore();
+  }
+
+// stream of user score
+  @override
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamUserScore() {
+    return firebaseService.streamUserData();
   }
 }
