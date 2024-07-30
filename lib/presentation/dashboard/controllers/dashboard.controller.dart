@@ -70,7 +70,7 @@ class DashboardController extends GetxController {
   int calculateScore() {
     int score = (user.value.correct * 10) - (user.value.wrong * 5);
     calculatescore.value = score.toString();
-    print('score is the ${calculatescore.value.toString()}');
+
     return score;
   }
 

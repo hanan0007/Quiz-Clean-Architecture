@@ -38,7 +38,7 @@ class Nav {
     ),
     GetPage(
       name: Routes.DASHBOARD,
-      page: () => DashboardScreen(),
+      page: () => const DashboardScreen(),
       binding: DashboardControllerBinding(),
     ),
     GetPage(

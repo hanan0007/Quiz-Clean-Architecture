@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -11,6 +13,14 @@ class QuizController extends GetxController {
   final LoadQuestionUsecase loadQuestionUsecase;
   final UpdateuserStatsUsecase updateuserStatsUsecase;
   QuizController(this.loadQuestionUsecase, this.updateuserStatsUsecase);
+  RxBool visible = false.obs;
+  void toggleVisibility() {
+    visible.value = true;
+
+    Timer(const Duration(seconds: 1), () {
+      visible.value = false;
+    });
+  }
 
   String cat = Get.arguments['cat'];
   String name = Get.arguments['name'];
