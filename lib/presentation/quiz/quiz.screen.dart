@@ -7,16 +7,19 @@ import 'package:pushable_button/pushable_button.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/domain/const/text_const.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/models/question_model/question_model.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/app_images/app_images.dart';
 
 import 'controllers/quiz.controller.dart';
 
 class QuizScreen extends GetView<QuizController> {
   const QuizScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = controller.getHeight(context);
     QuestionModel? questionmod;
+    final AppImgesController imagecontroller = Get.find();
     return Scaffold(
       // bottomNavigationBar: controller.isBottomBannerAdLoaded
       //     ? SizedBox(
@@ -60,21 +63,29 @@ class QuizScreen extends GetView<QuizController> {
           alignment: Alignment.center,
           children: [
             SizedBox(
-              height: height,
-              width: width,
-              child: Image.asset(
-                controller.cat == '18'
-                    ? 'assets/images/ic_tech_bg1.jpeg'
-                    : controller.cat == '23'
-                        ? 'assets/images/ic_history_bg.jpeg'
-                        : controller.cat == '21'
-                            ? 'assets/images/ic_sport_bg.jpeg'
+                height: height,
+                width: width,
+                child: controller.cat == '23'
+                    ? imagecontroller.getImageByIndex(0)
+                    : controller.cat == '21'
+                        ? imagecontroller.getImageByIndex(1)
+                        : controller.cat == '18'
+                            ? imagecontroller.getImageByIndex(2)
                             : controller.cat == '25'
-                                ? 'assets/images/ic_art_bg1.jpeg'
-                                : 'assets/images/ic_background2.jpeg',
-                fit: BoxFit.fill,
-              ),
-            ),
+                                ? imagecontroller.getImageByIndex(3)
+                                : imagecontroller.getImageByIndex(4)
+                //  Image.network(
+                //     fit: BoxFit.fill,
+                //     controller.cat == '23'
+                //         ? 'https://images.pexels.com/photos/2886268/pexels-photo-2886268.jpeg?auto=compress&cs=tinysrgb&w=600'
+                //         : controller.cat == '21'
+                //             ? 'https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=600 '
+                //             : controller.cat == '18'
+                //                 ? 'https://images.pexels.com/photos/6424589/pexels-photo-6424589.jpeg?auto=compress&cs=tinysrgb&w=600'
+                //                 : controller.cat == '25'
+                //                     ? 'https://images.pexels.com/photos/2360424/pexels-photo-2360424.jpeg?auto=compress&cs=tinysrgb&w=600'
+                //                     : 'https://w0.peakpx.com/wallpaper/635/405/HD-wallpaper-tariq-collection-blub-fantastic-landscape-nature-premium-science-technology-tree-world.jpg')
+                ),
             SizedBox(
               height: height,
               width: width,

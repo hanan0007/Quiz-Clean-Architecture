@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/firebase_options.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/app_images/app_images.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/connectivity/internet_connectivity.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/sound/global_music.dart';
 
@@ -20,7 +21,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await _checkinterjnet();
+  await _checkinternet();
   await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -28,6 +29,7 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   var initialRoute = await Routes.initialRoute;
   Get.put(AudioController());
+
   runApp(Main(initialRoute));
 }
 
@@ -47,6 +49,6 @@ class Main extends StatelessWidget {
   }
 }
 
-Future<void> _checkinterjnet() async {
+Future<void> _checkinternet() async {
   await ConnectivityService.checkConnectivity();
 }

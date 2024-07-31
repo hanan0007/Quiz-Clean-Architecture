@@ -3,6 +3,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
+import 'package:quiz_clean_archi/infrastructure/dal/services/app_images/app_images.dart';
 
 import 'controllers/splash.controller.dart';
 
@@ -10,6 +11,7 @@ class SplashScreen extends GetView<SplashController> {
   const SplashScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    Get.put(AppImgesController(context));
     final height = controller.getHeight(context);
     final widht = MediaQuery.sizeOf(context).width;
     // controller.onInit();
