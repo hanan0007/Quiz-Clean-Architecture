@@ -131,7 +131,6 @@ class _LinearBorderPainter extends CustomPainter {
       width != oldDelegate.width ||
       radius != oldDelegate.radius;
 }
-
 class _LinearClipper extends CustomClipper<Path> {
   final double? radius;
 

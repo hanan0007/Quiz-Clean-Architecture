@@ -3,9 +3,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
+import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/text_theme.dart';
 
 import '../../infrastructure/dal/services/app_images/app_images.dart';
 import 'controllers/leaderboard.controller.dart';
+import 'marquee_text.dart';
 
 class LeaderboardScreen extends GetView<LeaderboardController> {
   const LeaderboardScreen({super.key});
@@ -206,13 +208,14 @@ class LeaderboardEntry extends StatelessWidget {
                     foregroundImage: AssetImage(imagePath),
                   ),
                 ),
-                // SizedBox(
-                //     height: 20,
-                //     width: 60,
-                //     child: MarqueeText(
-                //       text: name,
-                //     ))
-                // SizedBox(width: 70, height: 20, child:)
+                SizedBox(
+                    height: 30,
+                    width: 60,
+                    child: MarqueeText(
+                      scrollSpeed: 1,
+                      text: "this is dummy  umeeeeerr ksjdks mmmmmmm",
+                    ))
+                //zedBox(width: 70, height: 20, child:)
               ],
             ),
           ),
