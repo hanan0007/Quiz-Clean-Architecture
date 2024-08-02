@@ -20,7 +20,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await _checkinterjnet();
+  await _checkinternet();
   await GetStorage.init();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -28,12 +28,13 @@ void main() async {
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   var initialRoute = await Routes.initialRoute;
   Get.put(AudioController());
+
   runApp(Main(initialRoute));
 }
 
 class Main extends StatelessWidget {
   final String initialRoute;
-  Main(this.initialRoute);
+  const Main(this.initialRoute, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,6 @@ class Main extends StatelessWidget {
   }
 }
 
-Future<void> _checkinterjnet() async {
+Future<void> _checkinternet() async {
   await ConnectivityService.checkConnectivity();
 }

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
 import 'package:quiz_clean_archi/domain/core/interfaces/dashbard_interface/dashboard_repository.dart';
 import 'package:quiz_clean_archi/domain/core/usecase/dashboard_usecase/check_appversion.dart';
 import 'package:quiz_clean_archi/domain/core/usecase/dashboard_usecase/launch_email.dart';
