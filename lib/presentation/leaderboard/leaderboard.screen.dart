@@ -4,6 +4,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 
+import '../../infrastructure/dal/services/app_images/app_images.dart';
 import 'controllers/leaderboard.controller.dart';
 
 class LeaderboardScreen extends GetView<LeaderboardController> {
@@ -12,13 +13,14 @@ class LeaderboardScreen extends GetView<LeaderboardController> {
   Widget build(BuildContext context) {
     final height = controller.getheight(context);
     final width = MediaQuery.of(context).size.width;
+    final AppImgesController imagecontroller = Get.find();
     return Scaffold(
         body: Container(
       height: height,
       width: width,
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/images/leaderbackgroung.png'),
+          image: imagecontroller.getImageByIndex(5).image,
           fit: BoxFit.cover,
         ),
       ),
@@ -86,12 +88,10 @@ class LeaderboardScreen extends GetView<LeaderboardController> {
               ),
             ),
             Positioned(
-              bottom: height * 0.1,
+              bottom: height * 0.17,
               left: width * 0.07,
               right: width * 0.07,
-              child:
-                  //  Center(child: Text("data")
-                  ScaleTransition(
+              child: ScaleTransition(
                 scale: controller.scaleAnimation,
                 child: FadeTransition(
                   opacity: controller.fadeAnimation,

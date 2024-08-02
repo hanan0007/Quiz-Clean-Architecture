@@ -10,18 +10,16 @@ class AppImgesController extends GetxController {
     'https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=600',
     'https://images.pexels.com/photos/6424589/pexels-photo-6424589.jpeg?auto=compress&cs=tinysrgb&w=600',
     'https://images.pexels.com/photos/2360424/pexels-photo-2360424.jpeg?auto=compress&cs=tinysrgb&w=600',
-    'https://w0.peakpx.com/wallpaper/635/405/HD-wallpaper-tariq-collection-blub-fantastic-landscape-nature-premium-science-technology-tree-world.jpg'
-    // Add more URLs as needed
+    'https://w0.peakpx.com/wallpaper/635/405/HD-wallpaper-tariq-collection-blub-fantastic-landscape-nature-premium-science-technology-tree-world.jpg',
+    'https://img.freepik.com/premium-vector/spotlights-with-stage-vector-light-effect_165143-1861.jpg?w=740'
   ];
-  // A map to store the cached images
-  // A list to store the cached images
+
   final List<Image> _cachedImages = [];
 
   imageProviderService(BuildContext context) {
     _preloadImages(context);
   }
 
-  // Preload and cache the images
   void _preloadImages(BuildContext context) {
     for (var url in _imageUrls) {
       final image = Image.network(
@@ -33,7 +31,6 @@ class AppImgesController extends GetxController {
     }
   }
 
-  // Get an image by index
   Image getImageByIndex(int index) {
     if (index >= 0 && index < _cachedImages.length) {
       return _cachedImages[index];
@@ -44,7 +41,6 @@ class AppImgesController extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     imageProviderService(context);
   }

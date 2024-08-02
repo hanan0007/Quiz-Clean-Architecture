@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
-import 'package:liquid_progress_indicator_v2/liquid_progress_indicator.dart';
 import 'package:pushable_button/pushable_button.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/domain/const/text_const.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/models/question_model/question_model.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/app_images/app_images.dart';
+import 'package:quiz_clean_archi/presentation/quiz/progress_indicator.dart';
 
 import 'controllers/quiz.controller.dart';
 
@@ -73,19 +73,7 @@ class QuizScreen extends GetView<QuizController> {
                             ? imagecontroller.getImageByIndex(2)
                             : controller.cat == '25'
                                 ? imagecontroller.getImageByIndex(3)
-                                : imagecontroller.getImageByIndex(4)
-                //  Image.network(
-                //     fit: BoxFit.fill,
-                //     controller.cat == '23'
-                //         ? 'https://images.pexels.com/photos/2886268/pexels-photo-2886268.jpeg?auto=compress&cs=tinysrgb&w=600'
-                //         : controller.cat == '21'
-                //             ? 'https://images.pexels.com/photos/2834917/pexels-photo-2834917.jpeg?auto=compress&cs=tinysrgb&w=600 '
-                //             : controller.cat == '18'
-                //                 ? 'https://images.pexels.com/photos/6424589/pexels-photo-6424589.jpeg?auto=compress&cs=tinysrgb&w=600'
-                //                 : controller.cat == '25'
-                //                     ? 'https://images.pexels.com/photos/2360424/pexels-photo-2360424.jpeg?auto=compress&cs=tinysrgb&w=600'
-                //                     : 'https://w0.peakpx.com/wallpaper/635/405/HD-wallpaper-tariq-collection-blub-fantastic-landscape-nature-premium-science-technology-tree-world.jpg')
-                ),
+                                : imagecontroller.getImageByIndex(4)),
             SizedBox(
               height: height,
               width: width,
@@ -133,7 +121,7 @@ class QuizScreen extends GetView<QuizController> {
                                         // color: Colors.red,
                                         height: 40,
                                         width: width * 0.8,
-                                        child: LiquidLinearProgressIndicator(
+                                        child: CustomIndicator(
                                           value:
                                               (controller.currentQuestionIndex +
                                                       1) /
@@ -310,8 +298,17 @@ class QuizScreen extends GetView<QuizController> {
                                                           'Please select answer',
                                                           snackPosition:
                                                               SnackPosition.TOP,
-                                                          colorText:
-                                                              Colors.white);
+                                                          icon: const Icon(
+                                                            Icons.warning,
+                                                            color: Colors.amber,
+                                                          ),
+                                                          colorText: Theme.of(
+                                                                          context)
+                                                                      .brightness ==
+                                                                  Brightness
+                                                                      .dark
+                                                              ? Colors.white
+                                                              : Colors.black);
                                                     }
                                                   },
                                                 ),

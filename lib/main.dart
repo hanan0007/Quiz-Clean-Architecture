@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:quiz_clean_archi/firebase_options.dart';
-import 'package:quiz_clean_archi/infrastructure/dal/services/app_images/app_images.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/connectivity/internet_connectivity.dart';
 import 'package:quiz_clean_archi/infrastructure/dal/services/sound/global_music.dart';
 

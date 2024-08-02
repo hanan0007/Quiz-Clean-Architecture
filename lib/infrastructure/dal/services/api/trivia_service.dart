@@ -28,8 +28,11 @@ class TriviaService {
       }
     } on TimeoutException catch (_) {
       Get.snackbar(
-          'Timeout', 'Please check your internet connection and try again.',
-          colorText: Colors.white, snackPosition: SnackPosition.TOP);
+        'Timeout',
+        'Please check your internet connection and try again.',
+        colorText: Colors.white,
+        snackPosition: SnackPosition.TOP,
+      );
       return null;
     } catch (e) {
       debugPrint('object$e');
