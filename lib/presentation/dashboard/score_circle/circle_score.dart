@@ -6,16 +6,19 @@ import '../controllers/dashboard.controller.dart';
 import 'circle_painter.dart';
 
 class CircleView extends StatefulWidget {
-  final int totalquestion;
-  final int wrongquestion;
-  final DashboardController controller;
-  final int righquestion;
+  final int totalValue;
+  final int wrongValue;
+  // final DashboardController controller;
+  final int righValue;
+  // final double height;
+  // final double width;
+  final double radius;
   const CircleView({
     super.key,
-    required this.totalquestion,
-    required this.controller,
-    required this.wrongquestion,
-    required this.righquestion,
+    required this.radius,
+    required this.totalValue,
+    required this.wrongValue,
+    required this.righValue,
   });
 
   @override
@@ -41,29 +44,36 @@ class _CircleViewState extends State<CircleView> {
                     alignment: Alignment.center,
                     children: [
                       SizedBox(
-                        height: 180, // Adjusted height
-                        width: 180, // Adjusted width
+                        height: widget.radius + 20, // Adjusted height
+                        width: widget.radius + 20, // Adjusted width
                         child: CustomPaint(
                           painter: MyPainterEmptyCircle(),
                         ),
                       ),
-                      TweenAnimationBuilder(
-                        duration: const Duration(seconds: 4),
-                        tween: Tween(begin: 0.0, end: 1.0),
-                        curve: Curves.easeOutCubic,
-                        builder: (context, value, child) {
-                          return InkWell(
-                            onTap: () {},
-                            child: CustomPaint(
-                              painter: OpenPainter(
-                                // totalQuestions: widget.totalquestion,
-                                rightAnswers: widget.righquestion,
-                                wrongAnswers: widget.wrongquestion,
-                                range: value, // Ensure the full circle is drawn
+                      Center(
+                        child: TweenAnimationBuilder(
+                          duration: const Duration(seconds: 4),
+                          tween: Tween(begin: 0.0, end: 1.0),
+                          curve: Curves.easeOutCubic,
+                          builder: (context, value, child) {
+                            return InkWell(
+                              onTap: () {},
+                              child: SizedBox(
+                                height: widget.radius,
+                                width: widget.radius,
+                                child: CustomPaint(
+                                  painter: OpenPainter(
+                                    // totalQuestions: widget.totalquestion,
+                                    rightAnswers: widget.righValue,
+                                    wrongAnswers: widget.wrongValue,
+                                    range:
+                                        value, // Ensure the full circle is drawn
+                                  ),
+                                ),
                               ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ],
                   ),

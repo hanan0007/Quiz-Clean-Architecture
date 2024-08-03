@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/domain/const/text_const.dart';
 import 'package:quiz_clean_archi/infrastructure/navigation/routes.dart';
+// import 'package:scrollable_text/scrollable_text.dart';
+// import 'package:text_scroll/text_scroll.dart';
 
 import '../../infrastructure/dal/services/app_exit/appexit_confermation.dart';
 import 'controllers/home.controller.dart';
@@ -127,7 +129,48 @@ class HomeScreen extends GetView<HomeController> {
                         ),
                       ),
                     ),
-                  )
+                  ),
+                  // new Expanded(
+                  //   flex: 1,
+                  //   child: new SingleChildScrollView(
+                  //     scrollDirection: Axis.vertical, //.horizontal
+                  //     child: new Text(
+                  //       "1 Description that is too long in text format(Here Data is coming from API) jdlksaf j klkjjflkdsjfkddfdfsdfds " +
+                  //           "2 Description that is too long in text format(Here Data is coming from API) d fsdfdsfsdfd dfdsfdsf sdfdsfsd d " +
+                  //           "3 Description that is too long in text format(Here Data is coming from API)  adfsfdsfdfsdfdsf   dsf dfd fds fs" +
+                  //           "4 Description that is too long in text format(Here Data is coming from API) dsaf dsafdfdfsd dfdsfsda fdas dsad" +
+                  //           "5 Description that is too long in text format(Here Data is coming from API) dsfdsfd fdsfds fds fdsf dsfds fds " +
+                  //           "6 Description that is too long in text format(Here Data is coming from API) asdfsdfdsf fsdf sdfsdfdsf sd dfdsf" +
+                  //           "7 Description that is too long in text format(Here Data is coming from API) df dsfdsfdsfdsfds df dsfds fds fsd" +
+                  //           "8 Description that is too long in text format(Here Data is coming from API)" +
+                  //           "9 Description that is too long in text format(Here Data is coming from API)" +
+                  //           "10 Description that is too long in text format(Here Data is coming from API)",
+                  //       style: new TextStyle(
+                  //         fontSize: 16.0,
+                  //         color: Colors.white,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  // ScrollableText(
+                  //   'This is the sample text for Flutter ScrollableText widget.hello this is ',
+                  //   mode: ScrollableTextMode.endless,
+                  //   velocity: Velocity(pixelsPerSecond: Offset(150, 0)),
+                  //   delayBefore: Duration(milliseconds: 500),
+                  //   numberOfReps: 5,
+                  //   pauseBetween: Duration(milliseconds: 50),
+                  //   style: TextStyle(color: Colors.green),
+                  //   textAlign: TextAlign.right,
+                  //   selectable: true,
+                  // ),
+                  // const Myscroll(
+                  //     mode: MyscrollMode.bouncing,
+                  //     fadeBorderSide: FadeBorderSide.both,
+                  //     velocity: Velocity(pixelsPerSecond: Offset(200, 0)),
+                  //     fadedBorder: true,
+                  //     style: TextStyle(color: Colors.amber),
+                  //     // mode: TextScrollMode.bouncing,
+                  //     'This is the sample text for Flutter TextScroll widget.hello this is '),
                 ],
               ),
             ),

@@ -4,10 +4,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
 import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/text_theme.dart';
+import 'package:quiz_clean_archi/presentation/dashboard/score_circle/circle_score.dart';
+import 'package:scrollable_text/scrollable_text.dart';
 
 import '../../infrastructure/dal/services/app_images/app_images.dart';
 import 'controllers/leaderboard.controller.dart';
-import 'marquee_text.dart';
 
 class LeaderboardScreen extends GetView<LeaderboardController> {
   const LeaderboardScreen({super.key});
@@ -208,13 +209,21 @@ class LeaderboardEntry extends StatelessWidget {
                     foregroundImage: AssetImage(imagePath),
                   ),
                 ),
+
                 SizedBox(
-                    height: 30,
-                    width: 60,
-                    child: MarqueeText(
-                      scrollSpeed: 1,
-                      text: "this is dummy  umeeeeerr ksjdks mmmmmmm",
-                    ))
+                  height: 20,
+                  width: 70,
+                  child: ScrollableText(
+                    name,
+                    mode: ScrollableTextMode.endless,
+                    velocity: Velocity(pixelsPerSecond: Offset(150, 0)),
+                    delayBefore: Duration(milliseconds: 500),
+                    pauseBetween: Duration(seconds: 1),
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    textAlign: TextAlign.right,
+                    selectable: true,
+                  ),
+                )
                 //zedBox(width: 70, height: 20, child:)
               ],
             ),

@@ -55,11 +55,12 @@ class DashboardScreen extends GetView<DashboardController> {
                                   ),
                                 )
                               : CircleView(
-                                  righquestion: controller.user.value.correct,
-                                  totalquestion:
+                                  radius: 180,
+                                  righValue: controller.user.value.correct,
+                                  totalValue:
                                       controller.user.value.totalquestion,
-                                  controller: controller,
-                                  wrongquestion: controller.user.value.wrong),
+                                  // controller: controller,
+                                  wrongValue: controller.user.value.wrong),
                           CircleAvatar(
                             backgroundColor:
                                 Theme.of(context).brightness == Brightness.dark
