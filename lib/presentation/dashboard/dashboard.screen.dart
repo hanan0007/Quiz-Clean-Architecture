@@ -54,61 +54,67 @@ class DashboardScreen extends GetView<DashboardController> {
                                     painter: MyPainterEmptyCircle(),
                                   ),
                                 )
-                              : CircleView(
-                                  radius: 180,
+                              : CircleScoreIndicator(
+                                  score: controller.calculatescore.value,
+                                  title: 'Your Score',
+                                  radius: 165,
+                                  subTitle: 'Pt',
+                                  scoreTextStyle: TextStyle(
+                                      color: colorScheme(context).secondary,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
                                   righValue: controller.user.value.correct,
                                   totalValue:
                                       controller.user.value.totalquestion,
-                                  // controller: controller,
                                   wrongValue: controller.user.value.wrong),
-                          CircleAvatar(
-                            backgroundColor:
-                                Theme.of(context).brightness == Brightness.dark
-                                    ? const Color.fromARGB(255, 31, 31, 31)
-                                    : Colors.white,
-                            radius: 65,
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Your Score',
-                                    style: TextStyle(
-                                        color: Theme.of(context).brightness ==
-                                                Brightness.dark
-                                            ? Colors.white
-                                            : Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Obx(
-                                    () => Text(
-                                      // "12",
-                                      controller.calculatescore.value,
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: colorScheme(context).secondary,
-                                          fontSize: 30),
-                                    ),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'pt',
-                                        style: TextStyle(
-                                            color:
-                                                Theme.of(context).brightness ==
-                                                        Brightness.dark
-                                                    ? Colors.white
-                                                    : Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
+                          // CircleAvatar(
+                          //   backgroundColor:
+                          //       Theme.of(context).brightness == Brightness.dark
+                          //           ? const Color.fromARGB(255, 31, 31, 31)
+                          //           : Colors.white,
+                          //   radius: 65,
+                          //   child: Center(
+                          //     child: Column(
+                          //       mainAxisAlignment: MainAxisAlignment.center,
+                          //       children: [
+                          //         Text(
+                          //           'Your Score',
+                          //           style: TextStyle(
+                          //               color: Theme.of(context).brightness ==
+                          //                       Brightness.dark
+                          //                   ? Colors.white
+                          //                   : Colors.black,
+                          //               fontWeight: FontWeight.bold),
+                          //         ),
+                          //         Obx(
+                          //           () => Text(
+                          //             // "12",
+                          //             controller.calculatescore.value,
+                          //             style: TextStyle(
+                          //                 fontWeight: FontWeight.bold,
+                          //                 color: colorScheme(context).secondary,
+                          //                 fontSize: 30),
+                          //           ),
+                          //         ),
+                          //         Row(
+                          //           mainAxisAlignment: MainAxisAlignment.center,
+                          //           children: [
+                          //             Text(
+                          //               'pt',
+                          //               style: TextStyle(
+                          //                   color:
+                          //                       Theme.of(context).brightness ==
+                          //                               Brightness.dark
+                          //                           ? Colors.white
+                          //                           : Colors.black,
+                          //                   fontWeight: FontWeight.bold),
+                          //             ),
+                          //           ],
+                          //         )
+                          //       ],
+                          //     ),
+                          //   ),
+                          // )
                         ],
                       ),
                     ),

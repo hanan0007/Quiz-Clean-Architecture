@@ -18,9 +18,6 @@ class OpenPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     double pi = math.pi;
 
-    // Debugging: Print the size provided to the painter
-    print('Canvas size: ${size.width} x ${size.height}');
-
     // Calculate the smallest dimension to make the circle fit within the given size
     double diameter = math.min(size.width, size.height);
 
@@ -28,9 +25,6 @@ class OpenPainter extends CustomPainter {
     Rect rect =
         Offset((size.width - diameter) / 2, (size.height - diameter) / 2) &
             Size(diameter, diameter);
-
-    // Debugging: Print rect dimensions
-    print('Drawing rect: $rect');
 
     // Paint for right answers (green)
     var paintRight = Paint()
@@ -49,10 +43,6 @@ class OpenPainter extends CustomPainter {
     if (totalAnswers > 0) {
       double rightAngle = (rightAnswers / totalAnswers) * 2 * pi * range;
       double wrongAngle = (wrongAnswers / totalAnswers) * 2 * pi * range;
-
-      // Debugging: Print angles
-      print('Right angle: $rightAngle');
-      print('Wrong angle: $wrongAngle');
 
       // Start drawing arcs
       double startAngle = 0;

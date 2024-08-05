@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:get/get.dart';
 import 'package:quiz_clean_archi/domain/const/global_const.dart';
-import 'package:quiz_clean_archi/infrastructure/theme/widgetsTheme/text_theme.dart';
 import 'package:quiz_clean_archi/presentation/dashboard/score_circle/circle_score.dart';
 import 'package:scrollable_text/scrollable_text.dart';
 
@@ -17,8 +17,23 @@ class LeaderboardScreen extends GetView<LeaderboardController> {
     final height = controller.getheight(context);
     final width = MediaQuery.of(context).size.width;
     final AppImgesController imagecontroller = Get.find();
-    return Scaffold(
-        body: Container(
+    return
+        // Scaffold(
+        //   body: Center(
+        //     child: Container(
+        //       // // color: Colors.amber,
+        //       // height: 200,
+        //       // color: Colors.amber,
+        //       child: CircleScoreIndicator(
+        //           radius: MediaQuery.sizeOf(context).height * 0.2,
+        //           totalValue: 100,
+        //           wrongValue: 50,
+        //           righValue: 50),
+        //     ),
+        //   ),
+        // );
+        Scaffold(
+            body: Container(
       height: height,
       width: width,
       decoration: BoxDecoration(
@@ -216,10 +231,10 @@ class LeaderboardEntry extends StatelessWidget {
                   child: ScrollableText(
                     name,
                     mode: ScrollableTextMode.endless,
-                    velocity: Velocity(pixelsPerSecond: Offset(150, 0)),
-                    delayBefore: Duration(milliseconds: 500),
-                    pauseBetween: Duration(seconds: 1),
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    velocity: const Velocity(pixelsPerSecond: Offset(150, 0)),
+                    delayBefore: const Duration(milliseconds: 500),
+                    pauseBetween: const Duration(seconds: 1),
+                    style: const TextStyle(color: Colors.white, fontSize: 16),
                     textAlign: TextAlign.right,
                     selectable: true,
                   ),
